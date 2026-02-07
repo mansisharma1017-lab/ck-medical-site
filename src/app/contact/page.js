@@ -1,3 +1,5 @@
+"use client";
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
@@ -22,7 +24,10 @@ export default function ContactPage() {
             Fill the form and our team will contact you.
           </p>
 
-          <ContactForm />
+          <Suspense fallback={<div>Loading...</div>}>
+           <ContactForm />
+          </Suspense>
+
 
         </div>
       </section>
