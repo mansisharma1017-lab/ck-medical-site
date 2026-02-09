@@ -162,7 +162,7 @@ export default function Navbar() {
 
             {/* Mobile CTA */}
             <a
-              href="https://wa.me/91XXXXXXXXXX"
+              href="https://wa.me/91-9899366774"
               className="mt-4 bg-[var(--ck-blue)] text-white text-center py-3 rounded-lg font-semibold">
                  WhatsApp
             </a>
