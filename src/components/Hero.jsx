@@ -9,7 +9,7 @@ export default function Hero() {
       style={{ backgroundImage: "url('/hero-bg.jpg')" }}
     >
       <div className="bg-black/55 w-full h-full flex items-center">
-        <div className="max-w-7xl mx-auto text-white p-6">
+        <div className="max-w-2xl text-white p-6">
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}

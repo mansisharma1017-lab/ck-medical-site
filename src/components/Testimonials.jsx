@@ -9,17 +9,17 @@ export default function Testimonials() {
 
         <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="bg-white p-6 rounded-xl shadow">
+          <div className="bg-white p-6 rounded-xl shadow h-full">
             <p>"Reliable equipment and fast delivery."</p>
             <p className="mt-4 font-semibold">Hospital Partner</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow">
+          <div className="bg-white p-6 rounded-xl shadow h-full">
             <p>"Excellent after-sales support."</p>
             <p className="mt-4 font-semibold">Diagnostic Center</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow">
+          <div className="bg-white p-6 rounded-xl shadow h-full">
             <p>"Quality products and compliance ready."</p>
             <p className="mt-4 font-semibold">Healthcare Buyer</p>
           </div>

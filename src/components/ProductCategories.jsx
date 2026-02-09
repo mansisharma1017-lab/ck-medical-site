@@ -9,21 +9,21 @@ export default function ProductCategories() {
 
         <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="bg-white p-8 rounded-xl shadow">
+          <div className="bg-white p-8 rounded-xl shadow hover:shadow-lg transition">
             <h3 className="font-bold mb-3">Respiratory Care</h3>
             <p className="text-gray-600">
               CPAP, BIPAP and respiratory support systems.
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow">
+          <div className="bg-white p-8 rounded-xl shadow hover:shadow-lg transition">
             <h3 className="font-bold mb-3">Patient Monitoring</h3>
             <p className="text-gray-600">
               Multi-parameter monitoring devices.
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow">
+          <div className="bg-white p-8 rounded-xl shadow hover:shadow-lg transition">
             <h3 className="font-bold mb-3">Clinical Devices</h3>
             <p className="text-gray-600">
               ICU and diagnostic equipment.

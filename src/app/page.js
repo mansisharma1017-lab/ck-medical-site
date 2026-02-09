@@ -5,8 +5,8 @@ import FeatureStrip from "@/components/FeatureStrip";
 import CertStrip from "@/components/CertStrip";
 import AboutPreview from "@/components/AboutPreview";
 import ProductCategories from "@/components/ProductCategories";
-import ProductsPreview from "@/components/ProductsPreview";
 import Solutions from "@/components/Solutions";
+import ProductsPreview from "@/components/ProductsPreview";
 import MissionVision from "@/components/MissionVision";
 import Values from "@/components/Values";
 import Testimonials from "@/components/Testimonials";
@@ -25,8 +25,8 @@ export default function Home() {
       <CertStrip />
       <AboutPreview />
       <ProductCategories />
-      <ProductsPreview />
       <Solutions />
+      <ProductsPreview />
       <MissionVision />
       <Values />
       <Testimonials />
