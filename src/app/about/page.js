@@ -1,10 +1,6 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
 export default function AboutPage() {
   return (
     <>
-      <Navbar />
 
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-6 space-y-8">
@@ -50,8 +46,6 @@ export default function AboutPage() {
 
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

@@ -1,22 +1,50 @@
 export default function FeatureStrip() {
   const items = [
-    "Certified Medical Equipment",
-    "Pan-India Supply",
-    "Compliance Ready",
-    "After-Sales Support"
+    {
+      title: "Certified Medical Equipment",
+      sub: "Quality checked & standards aligned",
+      icon: "🏥",
+    },
+    {
+      title: "Pan-India Supply",
+      sub: "Reliable distribution network",
+      icon: "🚚",
+    },
+    {
+      title: "Compliance Ready",
+      sub: "Industry & safety compliant",
+      icon: "📋",
+    },
+    {
+      title: "After-Sales Support",
+      sub: "Responsive technical assistance",
+      icon: "🛠️",
+    },
   ];
 
   return (
-    <section className="bg-white -mt-10 relative z-10">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6 px-6">
+    <section className="relative -mt-16 z-10">
+      <div className="container-ck">
+        <div className="grid md:grid-cols-4 gap-6">
 
-        {items.map((t, i) => (
-          <div key={i} className="bg-white shadow p-6 rounded-xl text-center">
-            <div className="text-2xl mb-2">✔️</div>
-            <p className="font-semibold">{t}</p>
-          </div>
-        ))}
+          {items.map((item, i) => (
+            <div
+              key={i}
+              className="card-ck p-6 text-center border-t-4 border-[var(--ck-blue)]"
+            >
+              <div className="text-3xl mb-3">{item.icon}</div>
 
+              <h3 className="font-bold text-base mb-1">
+                {item.title}
+              </h3>
+
+              <p className="text-sm text-slate-600">
+                {item.sub}
+              </p>
+            </div>
+          ))}
+
+        </div>
       </div>
     </section>
   );

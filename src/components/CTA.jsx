@@ -2,22 +2,32 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section className="bg-blue-700 text-white py-16">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+    <section className="bg-gradient-to-r from-[var(--ck-blue-dark)] to-[var(--ck-blue)] text-white">
+      <div className="container-ck section-pad text-center">
 
-        <h2 className="text-3xl font-bold mb-4">
-          Need Medical Equipment Solutions?
+        <h2 className="mb-4 text-white font-bold">
+          Looking for Reliable Medical Equipment Supply?
         </h2>
 
-        <p className="mb-6">
-          Talk to our team for product recommendations and quotes.
+
+        <p className="text-blue-100 max-w-2xl mx-auto mb-8">
+          Connect with our team for product details, technical specifications
+          and quick quotations for your healthcare facility needs.
         </p>
 
-        <Link href="/contact">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded font-semibold transition">
-            Contact Us
-          </button>
-        </Link>
+        <div className="flex flex-wrap justify-center gap-4">
+
+          <Link href="/contact" className="btn-primary">
+            Send Enquiry
+          </Link>
+
+          <a
+            href="https://wa.me/91-9899366774"
+            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded font-semibold shadow-lg">
+            WhatsApp Now
+          </a>
+
+        </div>
 
       </div>
     </section>

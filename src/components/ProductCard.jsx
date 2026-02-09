@@ -3,32 +3,56 @@ import Link from "next/link";
 
 export default function ProductCard({ p }) {
   return (
-    <div className="border rounded-xl overflow-hidden shadow hover:shadow-lg transition h-full flex flex-col">
+    <div className="card-ck overflow-hidden flex flex-col group">
 
-      <div className="relative h-56">
+      {/* Image */}
+      <div className="relative h-56 overflow-hidden">
         <Image
           src={p.image}
           alt={p.name}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-105 transition duration-300"
         />
+
+        {/* Brand Badge */}
+        {p.brand && (
+          <div className="absolute top-3 left-3 bg-white/90 text-xs font-semibold px-3 py-1 rounded shadow">
+            {p.brand}
+          </div>
+        )}
       </div>
 
-      <div className="p-5 flex flex-col flex-grow">
-        <h3 className="font-bold text-lg mb-1">{p.name}</h3>
-        <p className="text-sm text-gray-500 mb-2">{p.brand}</p>
-        <p className="text-gray-600 text-sm mb-4">{p.desc}</p>
+      {/* Content */}
+      <div className="p-6 flex flex-col flex-grow border-t-4 border-transparent group-hover:border-[var(--ck-blue)] transition">
 
-        {/* Enquiry button with product name in URL */}
-        <Link href={`/products/${p.id}`}>
-          <button className="mt-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded font-semibold transition">
-           View Details
-          </button>
-        </Link>
+        <h3 className="font-bold text-lg mb-2 leading-snug">
+          {p.name}
+        </h3>
 
+        <p className="text-sm text-slate-600 mb-5 line-clamp-3">
+          {p.desc}
+        </p>
+
+        {/* Actions */}
+        <div className="mt-auto flex gap-3">
+
+          <Link
+            href={`/products/${p.id}`}
+            className="btn-outline text-sm px-4 py-2"
+          >
+            View Details
+          </Link>
+
+          <Link
+            href={`/contact?product=${encodeURIComponent(p.name)}`}
+            className="btn-primary text-sm px-4 py-2"
+          >
+            Enquiry
+          </Link>
+
+        </div>
 
       </div>
-
     </div>
   );
 }

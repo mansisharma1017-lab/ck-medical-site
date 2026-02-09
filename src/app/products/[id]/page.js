@@ -1,68 +1,81 @@
 import { products } from "@/data/products";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProductDetail({ params }) {
-  const product = products.find(p => p.id.toString() === params.id);
+  const product = products.find(
+    p => String(p.id) === params.id
+  );
 
-  if (!product) return <div>Not found</div>;
+  if (!product) {
+    return (
+      <div className="container-ck section-pad">
+        Product not found
+      </div>
+    );
+  }
 
   return (
-    <>
-      <Navbar />
+    <section className="section-pad">
+      <div className="container-ck grid md:grid-cols-2 gap-12">
 
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6">
+        {/* Image */}
+        <div className="relative h-[420px]">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover rounded-xl"
+          />
+        </div>
 
-          <div className="relative h-[420px]">
-            <Image src={product.image} alt={product.name} fill className="object-cover rounded-xl"/>
-          </div>
+        {/* Content */}
+        <div>
+          <h1 className="mb-4">{product.name}</h1>
 
-          <div>
-            <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-            <p className="text-gray-600 mb-6">{product.desc}</p>
+          <p className="text-slate-600 mb-6">
+            {product.desc}
+          </p>
 
-            <ul className="space-y-2 text-gray-700">
-              <li>✔ Certified device</li>
-              <li>✔ Clinical grade</li>
-              <li>✔ Warranty support</li>
-            </ul>
+          <ul className="space-y-2 text-sm text-slate-700 mb-8">
+            <li>✔ Certified Device</li>
+            <li>✔ Clinical Grade Build</li>
+            <li>✔ Service Support</li>
+          </ul>
 
-            <a
-              href={`/contact?product=${encodeURIComponent(product.name)}`}
-              className="inline-block mt-8 bg-blue-600 text-white px-6 py-3 rounded"
-            >
-              Enquire This Product
-            </a>
-          </div>
+          <Link
+            href={`/contact?product=${encodeURIComponent(product.name)}`}
+            className="btn-primary"
+          >
+            Enquire This Product
+          </Link>
 
         </div>
-      </section>
-      
-      <div className="mt-8">
-  <h3 className="font-bold mb-4">Specifications</h3>
 
-  <table className="w-full border">
-    <tbody>
-      <tr className="border">
-        <td className="p-3 font-medium">Category</td>
-        <td className="p-3">Medical Device</td>
-      </tr>
-      <tr className="border">
-        <td className="p-3 font-medium">Compliance</td>
-        <td className="p-3">ISO / CE</td>
-      </tr>
-      <tr className="border">
-        <td className="p-3 font-medium">Warranty</td>
-        <td className="p-3">1 Year</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+      </div>
 
+      {/* Spec Table */}
+      <div className="container-ck mt-16">
+        <h3 className="font-bold mb-6">Standard Specifications</h3>
 
-      <Footer />
-    </>
+        <table className="w-full border text-sm">
+          <tbody>
+            <tr className="border">
+              <td className="p-3 font-medium">Category</td>
+              <td className="p-3 capitalize">{product.category}</td>
+            </tr>
+            <tr className="border">
+              <td className="p-3 font-medium">Compliance</td>
+              <td className="p-3">ISO / CE</td>
+            </tr>
+            <tr className="border">
+              <td className="p-3 font-medium">Warranty</td>
+              <td className="p-3">1 Year</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
   );
 }

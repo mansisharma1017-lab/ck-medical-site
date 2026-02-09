@@ -1,19 +1,47 @@
 import Image from "next/image";
 
 export default function CertStrip() {
+  const certs = [
+    { src: "/cert/iso.png", alt: "ISO Certified" },
+    { src: "/cert/gmp.png", alt: "GMP Certified" },
+    { src: "/cert/ce.png", alt: "CE Marked" },
+    { src: "/cert/gem.png", alt: "GeM Registered" },
+  ];
+
   return (
-    <section className="bg-gray-100 py-8">
-      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-10">
+    <section className="bg-[var(--ck-accent)] section-pad">
+      <div className="container-ck text-center">
 
-        <Image src="/cert/iso.png" width={120} height={60} alt="ISO"
-           className="h-16 w-auto object-contain" />
-        <Image src="/cert/gmp.png" width={120} height={60} alt="GMP" 
-           className="h-16 w-auto object-contain" />
-        <Image src="/cert/ce.png" width={120} height={60} alt="CE"
-           className="h-16 w-auto object-contain" />
-        <Image src="/cert/gem.png" width={120} height={60} alt="GeM"
-           className="h-16 w-auto object-contain" />
+        {/* Heading */}
+        <h2 className="mb-3">
+          Quality & Compliance Certifications
+        </h2>
 
+        <p className="text-slate-600 max-w-2xl mx-auto mb-10 text-sm">
+          CK Medical products and processes are aligned with recognized
+          quality and regulatory standards to ensure safety, reliability
+          and performance.
+        </p>
+
+        {/* Logos Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+
+          {certs.map((c, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-xl p-6 shadow-sm flex items-center justify-center hover:shadow-md transition"
+            >
+              <Image
+                src={c.src}
+                width={140}
+                height={70}
+                alt={c.alt}
+                className="h-14 w-auto object-contain"
+              />
+            </div>
+          ))}
+
+        </div>
       </div>
     </section>
   );

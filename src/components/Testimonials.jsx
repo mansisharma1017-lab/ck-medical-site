@@ -1,30 +1,75 @@
 export default function Testimonials() {
+  const items = [
+    {
+      quote:
+        "Reliable equipment quality and consistent delivery timelines. Support team is responsive and knowledgeable.",
+      name: "Procurement Head",
+      org: "Multi-Specialty Hospital",
+    },
+    {
+      quote:
+        "Devices are compliant and easy to deploy. After-sales service has been dependable.",
+      name: "Center Director",
+      org: "Diagnostic Chain",
+    },
+    {
+      quote:
+        "Good product performance and clear technical documentation. Smooth purchase experience.",
+      name: "Biomedical Team",
+      org: "Healthcare Facility",
+    },
+  ];
+
   return (
-    <section className="bg-gray-50 py-20">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+    <section className="section-pad bg-slate-50">
+      <div className="container-ck">
 
-        <h2 className="text-3xl font-bold mb-12">
-          What Our Clients Say
-        </h2>
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold text-[var(--ck-blue)] uppercase tracking-wider mb-3">
+            Client Feedback
+          </p>
 
+          <h2>
+            What Healthcare Partners Say
+          </h2>
+
+          <p className="text-slate-600 text-sm mt-4 max-w-2xl mx-auto">
+            Feedback from hospitals, diagnostic centers and healthcare buyers
+            using our medical equipment across applications.
+          </p>
+        </div>
+
+        {/* Grid */}
         <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="bg-white p-6 rounded-xl shadow h-full">
-            <p>"Reliable equipment and fast delivery."</p>
-            <p className="mt-4 font-semibold">Hospital Partner</p>
-          </div>
+          {items.map((t, i) => (
+            <div
+              key={i}
+              className="card-ck p-8 text-left relative"
+            >
+              {/* Quote mark */}
+              <div className="text-5xl text-[var(--ck-blue)]/20 font-bold mb-4">
+                “
+              </div>
 
-          <div className="bg-white p-6 rounded-xl shadow h-full">
-            <p>"Excellent after-sales support."</p>
-            <p className="mt-4 font-semibold">Diagnostic Center</p>
-          </div>
+              <p className="text-slate-700 text-sm leading-relaxed mb-6">
+                {t.quote}
+              </p>
 
-          <div className="bg-white p-6 rounded-xl shadow h-full">
-            <p>"Quality products and compliance ready."</p>
-            <p className="mt-4 font-semibold">Healthcare Buyer</p>
-          </div>
+              <div className="border-t pt-4">
+                <p className="font-semibold text-sm">
+                  {t.name}
+                </p>
+                <p className="text-xs text-slate-500">
+                  {t.org}
+                </p>
+              </div>
+            </div>
+          ))}
 
         </div>
+
       </div>
     </section>
   );

@@ -1,23 +1,48 @@
 export default function MissionVision() {
   return (
-    <section className="bg-gray-50 py-20">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 px-6">
+    <section className="section-pad bg-slate-50">
+      <div className="container-ck">
 
-        <div className="bg-white p-8 rounded-xl shadow">
-          <h3 className="text-2xl font-bold mb-3">Our Vision</h3>
-          <p className="text-gray-600">
-            To power the future of healthcare by making dependable,
-            innovative medical technology easily accessible to every
-            care provider.
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold text-[var(--ck-blue)] uppercase tracking-wider mb-3">
+            Our Direction
           </p>
+          <h2>
+            Vision & Mission
+          </h2>
         </div>
 
-        <div className="bg-white p-8 rounded-xl shadow">
-          <h3 className="text-2xl font-bold mb-3">Our Mission</h3>
-          <p className="text-gray-600">
-            To deliver high-quality, compliant medical equipment
-            with speed, transparency and strong after-sales support.
-          </p>
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 gap-10">
+
+          {/* Vision */}
+          <div className="card-ck p-10 border-l-4 border-[var(--ck-blue)]">
+            <h3 className="text-xl font-bold mb-4">
+              Our Vision
+            </h3>
+
+            <p className="text-slate-600 leading-relaxed">
+              To advance the future of healthcare by making dependable,
+              innovative and standards-aligned medical technology
+              accessible to care providers across diverse clinical
+              environments.
+            </p>
+          </div>
+
+          {/* Mission */}
+          <div className="card-ck p-10 border-l-4 border-[var(--ck-blue)]">
+            <h3 className="text-xl font-bold mb-4">
+              Our Mission
+            </h3>
+
+            <p className="text-slate-600 leading-relaxed">
+              To deliver high-quality medical equipment with compliance,
+              speed and transparency, backed by responsive service
+              support and long-term customer partnerships.
+            </p>
+          </div>
+
         </div>
 
       </div>

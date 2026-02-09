@@ -1,28 +1,22 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// src/app/layout.js
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "CK Medical Systems Pvt Ltd",
-  description: "Medical equipment supplier in New Delhi — respiratory, monitoring and clinical devices.",
+  title: "CK Medical | Surgical & Medical Device Manufacturer",
+  description:
+    "CK Medical is a trusted manufacturer and supplier of high-quality medical and surgical devices. Precision, quality and global standards.",
+  keywords: "medical devices, surgical instruments, CK Medical, healthcare manufacturing",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className="bg-white text-slate-800 antialiased">
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );

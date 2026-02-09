@@ -1,12 +1,8 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 
 export default function Certifications() {
   return (
     <>
-      <Navbar />
-
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
 
@@ -31,8 +27,6 @@ export default function Certifications() {
 
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

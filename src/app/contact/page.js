@@ -1,16 +1,10 @@
 "use client";
-
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import TopBar from "@/components/TopBar";
 import ContactForm from "@/components/ContactForm";
 import { Suspense } from "react";
 
 export default function ContactPage() {
   return (
     <>
-      <TopBar />
-      <Navbar />
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
@@ -67,8 +61,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

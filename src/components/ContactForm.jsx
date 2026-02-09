@@ -1,90 +1,140 @@
 "use client";
+
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import emailjs from "emailjs-com";
 
 export default function ContactForm() {
-
   const params = useSearchParams();
   const product = params.get("product");
 
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
+    company: "",
     email: "",
     phone: "",
-    message: product ? `Enquiry for: ${product}` : ""
+    message: product ? `Enquiry for product: ${product}` : "",
   });
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
-    emailjs.send(
-      "service_9cjosqc",
-      "template_royxssi",
-      {
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        message: form.message
-      },
-      "nfYrIrdYIU3BYIVnx"
-    ).then(
-      () => {
-        alert("Enquiry sent successfully ✅");
-        setForm({ name:"", email:"", phone:"", message:"" });
-      },
-      () => {
-        alert("Failed to send ❌");
-      }
-    );
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE,
+        form,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      alert("Enquiry sent successfully ✅");
+
+      setForm({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+    } catch (err) {
+      alert("Failed to send enquiry ❌");
+    }
+
+    setLoading(false);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form
+      onSubmit={handleSubmit}
+      className="card-ck p-8 space-y-6"
+    >
 
-      <input
-        name="name"
-        placeholder="Full Name"
-        value={form.name}
-        className="w-full border p-3 rounded"
-        onChange={handleChange}
-        required
-      />
+      {/* Heading */}
+      <div>
+        <h3 className="text-xl font-bold mb-1">
+          Send Product Enquiry
+        </h3>
+        <p className="text-sm text-slate-600">
+          Fill the form and our team will respond shortly.
+        </p>
+      </div>
 
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        className="w-full border p-3 rounded"
-        onChange={handleChange}
-        required
-      />
+      {/* Name */}
+      <div>
+        <label className="text-sm font-semibold">Full Name</label>
+        <input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          required
+          className="w-full border rounded-lg p-3 mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--ck-blue)]"
+        />
+      </div>
 
-      <input
-        name="phone"
-        placeholder="Phone"
-        value={form.phone}
-        className="w-full border p-3 rounded"
-        onChange={handleChange}
-        required
-      />
+      {/* Company */}
+      <div>
+        <label className="text-sm font-semibold">Company / Hospital</label>
+        <input
+          name="company"
+          value={form.company}
+          onChange={handleChange}
+          className="w-full border rounded-lg p-3 mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--ck-blue)]"
+        />
+      </div>
 
-      <textarea
-        name="message"
-        placeholder="Your enquiry"
-        value={form.message}
-        className="w-full border p-3 rounded h-32"
-        onChange={handleChange}
-        required
-      />
+      {/* Grid */}
+      <div className="grid md:grid-cols-2 gap-6">
 
-      <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded font-semibold transition">
-        Send Enquiry
+        <div>
+          <label className="text-sm font-semibold">Email</label>
+          <input
+            name="email"
+            type="email"
+            required
+            value={form.email}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-3 mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--ck-blue)]"
+          />
+        </div>
+
+        <div>
+          <label className="text-sm font-semibold">Phone</label>
+          <input
+            name="phone"
+            required
+            value={form.phone}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-3 mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--ck-blue)]"
+          />
+        </div>
+
+      </div>
+
+      {/* Message */}
+      <div>
+        <label className="text-sm font-semibold">Enquiry Details</label>
+        <textarea
+          name="message"
+          required
+          value={form.message}
+          onChange={handleChange}
+          className="w-full border rounded-lg p-3 mt-1 h-36 focus:outline-none focus:ring-2 focus:ring-[var(--ck-blue)]"
+        />
+      </div>
+
+      {/* Button */}
+      <button
+        disabled={loading}
+        className="btn-primary w-full disabled:opacity-60"
+      >
+        {loading ? "Sending..." : "Send Enquiry"}
       </button>
 
     </form>

@@ -1,13 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 
 export default function ProductsPage() {
-
   const [q, setQ] = useState("");
 
   const filtered = products.filter(p =>
@@ -15,34 +12,32 @@ export default function ProductsPage() {
   );
 
   return (
-    <>
-      <Navbar />
+    <section className="section-pad">
+      <div className="container-ck">
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-
-          <h1 className="text-3xl md:text-4xl font-bold">
-            Our Products
-          </h1>
-
-          {/* 🔍 Search box */}
-          <input
-            placeholder="Search products..."
-            className="border p-3 rounded mb-10 w-full md:w-96"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-          />
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {filtered.map(p => (
-              <ProductCard key={p.id} p={p}/>
-            ))}
-          </div>
-
+        <div className="mb-10">
+          <p className="text-sm font-semibold text-[var(--ck-blue)] uppercase tracking-wider mb-3">
+            Product Catalog
+          </p>
+          <h1>Our Products</h1>
         </div>
-      </section>
 
-      <Footer />
-    </>
+        {/* Search */}
+        <input
+          placeholder="Search products..."
+          className="border rounded-lg p-3 mb-10 w-full md:w-96 focus:ring-2 focus:ring-[var(--ck-blue)]"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+        />
+
+        {/* Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {filtered.map(p => (
+            <ProductCard key={p.id} p={p} />
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 }
