@@ -22,7 +22,7 @@ export default function CTA() {
           </Link>
 
           <a
-            href="https://wa.me/91-9899366774"
+            href="https://wa.me/919899366774"
             className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded font-semibold shadow-lg">
             WhatsApp Now
           </a>

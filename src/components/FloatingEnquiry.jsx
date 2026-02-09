@@ -6,7 +6,7 @@ export default function FloatingEnquiry() {
 
       {/* WhatsApp */}
       <a
-        href="https://wa.me/91-9899366774"
+        href="https://wa.me/919899366774"
         target="_blank"
         className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-full shadow-lg font-semibold text-sm transition hover:-translate-y-0.5"
       >
